@@ -1,0 +1,70 @@
+services:
+  app:
+    build:
+      args:
+        user: nipen
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: restaurant
+    container_name: restaurant-application
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+      - ./.docker/app/php-fpm.ini:/usr/local/etc/php/conf.d/99-app.ini
+    depends_on:
+      - database
+    links:
+      - database
+    networks:
+      - restaurant-network
+  nginx:
+    image: nginx:alpine
+    container_name: restaurant-nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT}:80"
+    volumes:
+      - ./:/var/www
+      - ./.docker/nginx:/etc/nginx/conf.d/
+    networks:
+      - restaurant-network
+    depends_on:
+      - database
+      - phpmyadmin
+  database:
+    image: mysql:latest
+    container_name: restaurant-database
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - restaurant-network
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: restaurant-phpmyadmin
+    restart: always
+    tty: true
+    depends_on:
+      - database
+    ports:
+      - "${PMA_PORT}:80"
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: ${DB_USERNAME}
+      PMA_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      UPLOAD_LIMIT: 2048M
+    networks:
+      - restaurant-network
+
+networks:
+  restaurant-network:
+    driver: bridge
