@@ -23,7 +23,7 @@ if(isset($_POST['add_product'])){
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = 'C:\Users\user\Documents\backend\dockerized_website\project images'.$image;
+   $image_folder = '../uploaded_img/'.$image;
 
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
    $select_products->execute([$name]);
