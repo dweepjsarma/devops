@@ -120,8 +120,8 @@ CREATE TABLE `users` (
   `address` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `users` (`id`, `name`, 'email','number',`password`) VALUES
-(1, 'Dweepjyoti', 'sarmadweepjyoti@gmail.com','7086642252','6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2');
+INSERT INTO `users` (`id`, `name`, `email`,`number`,`password`) VALUES
+(1, 'Dweepjyoti', 'sarmadweepjyoti@gmail.com','7086642252','590951d006f913679ba92c94439f37cb');
 --
 -- Indexes for dumped tables
 --
