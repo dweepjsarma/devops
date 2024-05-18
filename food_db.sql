@@ -1,27 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: May 11, 2024 at 06:09 PM
--- Server version: 8.0.36-0ubuntu0.22.04.1
--- PHP Version: 8.2.18
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `food_db`
---
-
--- --------------------------------------------------------
+----------------------------------------------------------
 
 --
 -- Table structure for table `admin`
@@ -63,8 +45,8 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `messages` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `number` varchar(12) NOT NULL,
