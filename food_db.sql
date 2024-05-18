@@ -63,8 +63,8 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `messages` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `number` varchar(12) NOT NULL,
