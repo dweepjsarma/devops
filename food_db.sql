@@ -63,8 +63,8 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `messages` (
-  `id` int(100) NOT NULL,
-  `user_id` int(100) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `number` varchar(12) NOT NULL,
@@ -120,6 +120,8 @@ CREATE TABLE `users` (
   `address` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `users` (`id`, `name`, 'email','number',`password`) VALUES
+(1, 'Dweepjyoti', 'sarmadweepjyoti@gmail.com','7086642252','6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2');
 --
 -- Indexes for dumped tables
 --
